@@ -1,0 +1,47 @@
+PODS:
+  - DVVGradientView (1.0.0)
+  - DVVScrollPageView (1.0.0)
+  - DVVSegmentedView (1.0.0):
+    - PureLayout
+  - PureLayout (3.1.9)
+
+DEPENDENCIES:
+  - DVVGradientView (from `https://github.com/devdawei/DVVGradientView.git`, tag `1.0.0`)
+  - DVVScrollPageView (from `https://github.com/devdawei/DVVScrollPageView.git`, tag `1.0.0`)
+  - DVVSegmentedView (from `https://github.com/devdawei/DVVSegmentedView.git`, tag `1.0.0`)
+
+SPEC REPOS:
+  trunk:
+    - PureLayout
+
+EXTERNAL SOURCES:
+  DVVGradientView:
+    :git: https://github.com/devdawei/DVVGradientView.git
+    :tag: 1.0.0
+  DVVScrollPageView:
+    :git: https://github.com/devdawei/DVVScrollPageView.git
+    :tag: 1.0.0
+  DVVSegmentedView:
+    :git: https://github.com/devdawei/DVVSegmentedView.git
+    :tag: 1.0.0
+
+CHECKOUT OPTIONS:
+  DVVGradientView:
+    :git: https://github.com/devdawei/DVVGradientView.git
+    :tag: 1.0.0
+  DVVScrollPageView:
+    :git: https://github.com/devdawei/DVVScrollPageView.git
+    :tag: 1.0.0
+  DVVSegmentedView:
+    :git: https://github.com/devdawei/DVVSegmentedView.git
+    :tag: 1.0.0
+
+SPEC CHECKSUMS:
+  DVVGradientView: 8d78338140d5b62ccd763d8cfd3b87d6e127946b
+  DVVScrollPageView: 43a6f0697598a7d25444bfded38bfa6695c1a506
+  DVVSegmentedView: cefcb12a5e6ab0c22c9c53377742c8970231975d
+  PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
+
+PODFILE CHECKSUM: 1a4f342285054274b54f6cb319c6dddbd6d9aa8a
+
+COCOAPODS: 1.11.2
