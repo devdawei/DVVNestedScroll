@@ -3,7 +3,7 @@ iOS 嵌套滚动控制，类似于美团，饿了么首页效果
 
 CocoaPods 导入方式：
 ```
-pod 'DVVNestedScroll', :git => 'https://github.com/devdawei/DVVNestedScroll.git', :tag => '1.0.0'
+pod 'DVVNestedScroll', :git => 'https://github.com/devdawei/DVVNestedScroll.git', :tag => '1.0.1'
 ```
 
 因为依赖 DVVGradientView，DVVSegmentedView，DVVScrollPageView，所以还需要导入依赖：
