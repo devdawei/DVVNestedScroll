@@ -24,12 +24,6 @@
     return self;
 }
 
-- (void)handleScrollViewsCanScroll:(BOOL)canScroll {
-    for (UIScrollView *scrollView in self.subScrollViews) {
-        scrollView.dvv_canScroll = canScroll;
-    }
-}
-
 - (void)handleScrollViewsScrollToTop {
     for (UIScrollView *scrollView in self.subScrollViews) {
         scrollView.contentOffset = CGPointZero;
@@ -41,25 +35,17 @@
         return;
     }
     CGFloat contentHeight = scrollView.contentSize.height;
+    if (contentHeight <= 0) {
+        return;
+    }
     CGFloat currentOffsetY = scrollView.contentOffset.y;
     CGFloat maxOffsetY = contentHeight - scrollView.bounds.size.height;
     if (maxOffsetY < 0) {
         return;
     }
-//    NSLog(@"%@ %@", @(currentOffsetY), @(maxOffsetY));
-    if (currentOffsetY >= maxOffsetY) {
-//        NSLog(@"已停靠");
-        self.docked = YES;
+    if (currentOffsetY > maxOffsetY || self.docked) {
+        self.docked = true;
         scrollView.contentOffset = CGPointMake(0, maxOffsetY);
-        [self handleScrollViewsCanScroll:YES];
-    } else {
-        if (self.docked) {
-//            NSLog(@"暂未停靠：docked=YES");
-            scrollView.contentOffset = CGPointMake(0, maxOffsetY);
-        } else {
-//            NSLog(@"暂未停靠");
-            [self handleScrollViewsScrollToTop];
-        }
     }
 }
 
@@ -67,13 +53,13 @@
     if (self.subScrollViews.count == 0) {
         return;
     }
-    if (scrollView.dvv_canScroll) {
-        if (scrollView.contentOffset.y <= 0) {
-            scrollView.dvv_canScroll = NO;
-            self.docked = NO;
+    if (self.docked) {
+        if (scrollView.contentOffset.y < 0) {
+            self.docked = false;
+            [self handleScrollViewsScrollToTop];
         }
     } else {
-        scrollView.dvv_canScroll = NO;
+        scrollView.contentOffset = CGPointMake(0, 0);
     }
 }
 
@@ -90,32 +76,6 @@
             }
             return YES;
         }
-        return NO;
-    }
-}
-
-@end
-
-
-@implementation UIScrollView (DVVNestedScrollManager)
-
-static char DVVNestedScrollCanScroll;
-
-- (void)setDvv_canScroll:(BOOL)dvv_canScroll {
-    objc_setAssociatedObject(self, &DVVNestedScrollCanScroll, @(dvv_canScroll), OBJC_ASSOCIATION_ASSIGN);
-    
-    self.showsVerticalScrollIndicator = dvv_canScroll;
-    if (!dvv_canScroll) {
-        self.contentOffset = CGPointZero;
-    }
-}
-
-- (BOOL)dvv_canScroll {
-    id obj = objc_getAssociatedObject(self, &DVVNestedScrollCanScroll);
-    if (obj) {
-        return [obj boolValue];
-    } else {
-        // default value.
         return NO;
     }
 }

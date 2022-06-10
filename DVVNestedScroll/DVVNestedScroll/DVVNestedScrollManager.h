@@ -24,13 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface UIScrollView (DVVNestedScrollManager)
-
-@property (nonatomic, assign) BOOL dvv_canScroll;
-
-@end
-
-
 @interface DVVNestedScrollTableView : UITableView
 
 @end
